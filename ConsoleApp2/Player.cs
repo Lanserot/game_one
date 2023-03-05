@@ -11,6 +11,8 @@ namespace ConsoleApp2
             ConsoleKeyInfo keyInfo = Console.ReadKey(true);
             string key = Convert.ToString(keyInfo.Key);
 
+            RemoveOldPosition();
+
             switch (key)
             {
                 case "UpArrow":
@@ -18,7 +20,6 @@ namespace ConsoleApp2
                     {
                         if (fields[top - 1, left] != " ")
                         {
-                            RemoveOldPosition();
                             top--;
                         }
                     }
@@ -28,7 +29,6 @@ namespace ConsoleApp2
                     {
                         if (fields[top + 1, left] != " ")
                         {
-                            RemoveOldPosition();
                             top++;
                         }
                     }
@@ -38,7 +38,6 @@ namespace ConsoleApp2
                     {
                         if (fields[top, left - 1] != " ")
                         {
-                            RemoveOldPosition();
                             left--;
                         }
                     }
@@ -48,7 +47,6 @@ namespace ConsoleApp2
                     {
                         if (fields[top, left + 1] != " ")
                         {
-                            RemoveOldPosition();
                             left++;
                         }
                     }

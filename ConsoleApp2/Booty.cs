@@ -5,37 +5,36 @@ namespace ConsoleApp2
     internal class Booty
     {
         static public int left, top;
-        static private bool isDraw = false;
 
         static public void GeneratePosition(string[,] fields)
         {
-            isDraw = false;
+            bool generate = false;
 
             Random rand = new Random();
-            while (!isDraw)
+            while (!generate)
             {
                 left = rand.Next(0, fields.GetLength(1));
                 top = rand.Next(0, fields.GetLength(0));
-                if (fields[top, left] != "=")
+                if (fields[top, left] != " ")
                 {
-                    isDraw = true;
+                    generate = true;
                 }
             }
             
         }
         static public void CatchCheck()
         {
+            Console.SetCursorPosition(left, top);
+
             if (left == Player.left && top == Player.top)
             {
                 Player.count += 10;
-                Console.SetCursorPosition(left, top);
                 Console.Write("█");
                 GeneratePosition(Field.GetField());
             }
             else if(left == Enemy.left && top == Enemy.top)
             {
                 Enemy.count += 10;
-                Console.SetCursorPosition(left, top);
                 Console.Write("█");
                 GeneratePosition(Field.GetField());
             }

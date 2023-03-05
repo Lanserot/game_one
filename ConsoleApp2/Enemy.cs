@@ -13,6 +13,7 @@ namespace ConsoleApp2
             isMoved = false;
             int randStep;
 
+            RemoveOldPosition();
             while (!isMoved)
             {
                 randStep = rand.Next(0, 4);
@@ -24,7 +25,6 @@ namespace ConsoleApp2
                             && Field.GetField()[top, left - 1] != " ")
                         {
                             isMoved = true;
-                            removeOldPosition();
                             left--;
                         }
                         break;
@@ -35,7 +35,6 @@ namespace ConsoleApp2
                             && Field.GetField()[top, left + 1] != " ")
                         {
                             isMoved = true;
-                            removeOldPosition();
                             left++;
                         }
                         break;
@@ -45,7 +44,6 @@ namespace ConsoleApp2
                             && Field.GetField()[top - 1, left] != " ")
                         {
                             isMoved = true;
-                            removeOldPosition();
                             top--;
                         }
                         break;
@@ -56,7 +54,6 @@ namespace ConsoleApp2
                             && Field.GetField()[top + 1, left] != " ")
                         {
                             isMoved = true;
-                            removeOldPosition();
                             top++;
                         }
                         break;
@@ -64,7 +61,7 @@ namespace ConsoleApp2
             }
             
         }
-        static private void removeOldPosition()
+        static private void RemoveOldPosition()
         {
             Console.SetCursorPosition(left, top);
             Console.Write("█");
