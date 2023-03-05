@@ -16,25 +16,37 @@ namespace ConsoleApp2
                 case "UpArrow":
                     if (top > 0)
                     {
-                        top--;
+                        if (fields[top - 1, left] != "=")
+                        {
+                            top--;
+                        }
                     }
                     break;
                 case "DownArrow":
                     if (top < fields.GetLength(0) - 1)
                     {
-                        top++;
+                        if (fields[top + 1, left] != "=")
+                        {
+                            top++;
+                        }
                     }
                     break;
                 case "LeftArrow":
                     if (left > 0)
                     {
-                        left--;
+                        if (fields[top, left - 1] != "=")
+                        {
+                            left--;
+                        }
                     }
                     break;
                 case "RightArrow":
                     if (left < fields.GetLength(1) - 1)
                     {
-                        left++;
+                        if (fields[top, left + 1] != "=")
+                        {
+                            left++;
+                        }
                     }
                     break;
             }

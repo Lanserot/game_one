@@ -5,18 +5,34 @@ namespace ConsoleApp2
     internal class Booty
     {
         static public int left, top;
+        static private bool isDraw = false;
+
         static public void GeneratePosition(string[,] fields)
         {
-            Random rand = new Random();
+            isDraw = false;
 
-            left = rand.Next(0, fields.GetLength(1));
-            top = rand.Next(0, fields.GetLength(0));
+            Random rand = new Random();
+            while (!isDraw)
+            {
+                left = rand.Next(0, fields.GetLength(1));
+                top = rand.Next(0, fields.GetLength(0));
+                if (fields[top, left] != "=")
+                {
+                    isDraw = true;
+                }
+            }
+            
         }
         static public void CatchCheck()
         {
             if (left == Player.left && top == Player.top)
             {
                 Player.count += 10;
+                GeneratePosition(Field.GetField());
+            }
+            else if(left == Enemy.left && top == Enemy.top)
+            {
+                Enemy.count += 10;
                 GeneratePosition(Field.GetField());
             }
         }

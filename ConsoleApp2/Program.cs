@@ -25,6 +25,10 @@ namespace ConsoleApp2
 
             Player.Draw();
 
+            Enemy.Draw();
+
+            Enemy.Move();
+
             Field.DrawFooter();
 
             Player.CheckMove(Field.GetField());
