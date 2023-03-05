@@ -6,16 +6,16 @@ namespace ConsoleApp2
     {
         private static string[,] fields = {
                 {"█","█","█","█","█","█","█","█","█","█","█","█","█","█"},
-                {"█","=","=","█","█","█","█","█","=","█","█","█","█","█"},
-                {"█","█","█","█","█","█","█","█","█","█","=","█","=","█"},
-                {"█","█","=","█","█","=","█","=","█","█","█","█","█","█"},
-                {"█","█","█","█","█","█","█","█","█","█","█","=","█","█"},
-                {"█","█","█","█","=","█","=","█","█","█","█","█","█","█"},
-                {"█","█","█","█","█","█","█","█","█","=","█","=","=","█"},
-                {"█","█","█","█","█","█","█","=","█","█","█","█","█","█"},
-                {"█","█","=","█","█","=","█","█","█","█","█","█","█","█"},
-                {"█","█","█","█","█","█","█","=","█","█","█","=","█","█"},
-                {"█","█","=","█","█","█","█","█","█","█","█","█","█","█"},
+                {"█"," "," ","█","█","█","█","█"," ","█","█","█","█","█"},
+                {"█","█","█","█","█","█","█","█","█","█"," ","█"," ","█"},
+                {"█","█"," ","█","█"," ","█"," ","█","█","█","█","█","█"},
+                {"█","█","█","█","█","█","█","█","█","█","█"," ","█","█"},
+                {"█","█","█","█"," ","█"," ","█","█","█","█","█","█","█"},
+                {"█","█","█","█","█","█","█","█","█"," ","█"," "," ","█"},
+                {"█","█","█","█","█","█","█"," ","█","█","█","█","█","█"},
+                {"█","█"," ","█","█"," ","█","█","█","█","█","█","█","█"},
+                {"█","█","█","█","█","█","█"," ","█","█","█"," ","█","█"},
+                {"█","█"," ","█","█","█","█","█","█","█","█","█","█","█"},
             };
         static public string[,] GetField()
         {
@@ -35,18 +35,20 @@ namespace ConsoleApp2
 
         static public void DrawFooter()
         {
-            Console.SetCursorPosition(0, Field.GetField().GetLength(0) + 1);
-            Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine("Поймайте ДОБЫЧУ");
-            Console.ResetColor();
-            Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine("Ваши очки : " + Player.count);
-            Console.ResetColor();
-            Console.ForegroundColor = ConsoleColor.Blue;
-            Console.WriteLine("Соперника очки : " + Enemy.count);
-            Console.ResetColor();
+            Console.SetCursorPosition(0, Field.GetField().GetLength(0) + 5);
+
+            WriteColorfulText("Поймайте ДОБЫЧУ", ConsoleColor.Red);
+            WriteColorfulText("Ваши очки : " + Player.count, ConsoleColor.Green);
+            WriteColorfulText("Соперника очки : " + Enemy.count, ConsoleColor.Blue);
+ 
             Console.WriteLine("Управление стрелками");
-            Console.WriteLine("НЕ зажимать");
+        }
+
+        static private void WriteColorfulText(string text, ConsoleColor color)
+        {
+            Console.ForegroundColor = color;
+            Console.WriteLine(text);
+            Console.ResetColor();
         }
     }
 }

@@ -28,11 +28,15 @@ namespace ConsoleApp2
             if (left == Player.left && top == Player.top)
             {
                 Player.count += 10;
+                Console.SetCursorPosition(left, top);
+                Console.Write("█");
                 GeneratePosition(Field.GetField());
             }
             else if(left == Enemy.left && top == Enemy.top)
             {
                 Enemy.count += 10;
+                Console.SetCursorPosition(left, top);
+                Console.Write("█");
                 GeneratePosition(Field.GetField());
             }
         }

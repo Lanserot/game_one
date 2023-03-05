@@ -6,7 +6,7 @@ namespace ConsoleApp2
     {
         static public int left = 0, top = 0, count = 0;
 
-        static public void CheckMove(string[,] fields)
+        static public void Move(string[,] fields)
         {
             ConsoleKeyInfo keyInfo = Console.ReadKey(true);
             string key = Convert.ToString(keyInfo.Key);
@@ -16,8 +16,9 @@ namespace ConsoleApp2
                 case "UpArrow":
                     if (top > 0)
                     {
-                        if (fields[top - 1, left] != "=")
+                        if (fields[top - 1, left] != " ")
                         {
+                            RemoveOldPosition();
                             top--;
                         }
                     }
@@ -25,8 +26,9 @@ namespace ConsoleApp2
                 case "DownArrow":
                     if (top < fields.GetLength(0) - 1)
                     {
-                        if (fields[top + 1, left] != "=")
+                        if (fields[top + 1, left] != " ")
                         {
+                            RemoveOldPosition();
                             top++;
                         }
                     }
@@ -34,8 +36,9 @@ namespace ConsoleApp2
                 case "LeftArrow":
                     if (left > 0)
                     {
-                        if (fields[top, left - 1] != "=")
+                        if (fields[top, left - 1] != " ")
                         {
+                            RemoveOldPosition();
                             left--;
                         }
                     }
@@ -43,15 +46,23 @@ namespace ConsoleApp2
                 case "RightArrow":
                     if (left < fields.GetLength(1) - 1)
                     {
-                        if (fields[top, left + 1] != "=")
+                        if (fields[top, left + 1] != " ")
                         {
+                            RemoveOldPosition();
                             left++;
                         }
                     }
                     break;
             }
-        }
 
+
+
+        }
+        static private void RemoveOldPosition()
+        {
+            Console.SetCursorPosition(left, top);
+            Console.Write("█");
+        }
         static public void Draw()
         {
             Console.SetCursorPosition(left, top);

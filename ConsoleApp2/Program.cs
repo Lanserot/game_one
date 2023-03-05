@@ -8,6 +8,8 @@ namespace ConsoleApp2
         static void Main(string[] args)
         {
             Booty.GeneratePosition(Field.GetField());
+            Console.CursorVisible = false;
+            Field.Draw();
 
             while (true)
             {
@@ -19,22 +21,13 @@ namespace ConsoleApp2
         {
             Booty.CatchCheck();
 
-            Field.Draw();
-
             Booty.Draw();
-
             Player.Draw();
-
-            Enemy.Draw();
-
-            Enemy.Move();
-
             Field.DrawFooter();
 
-            Player.CheckMove(Field.GetField());
-
-            Thread.Sleep(10);
-            Console.Clear();
+            Enemy.Move();
+            Enemy.Draw();
+            Player.Move(Field.GetField());
         }
 
 
