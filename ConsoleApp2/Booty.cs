@@ -24,7 +24,7 @@ namespace ConsoleApp2
         {
             Console.SetCursorPosition(left, top);
             Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine("T");
+            Console.WriteLine("█");
             Console.ResetColor();
         }
     }

@@ -38,16 +38,13 @@ namespace ConsoleApp2
                     }
                     break;
             }
-
-            Console.SetCursorPosition(left, top);
-            Console.Write('X');
         }
 
         static public void Draw()
         {
             Console.SetCursorPosition(left, top);
             Console.ForegroundColor = ConsoleColor.Green;
-            Console.Write('X');
+            Console.Write("█");
             Console.ResetColor();
         }
     }
